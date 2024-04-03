@@ -13,19 +13,19 @@ return new class extends Migration {
         Schema::create('pets', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('age');
+            $table->date('birth_date');
             $table->string('breed');
             $table->string('gender');
             $table->string('color');
-            $table->integer('weight');
-            $table->integer('size');
+            $table->double('weight');
+            $table->double('size');
             $table->boolean('vaccination_status');
             $table->string('description');
-            $table->date('date_rescued');
-            $table->date('date_birth');
+            $table->date('rescued_date');
             $table->boolean('adoption_status');
+            $table->date('publish_date');
             $table->foreignId('type_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
-            
+
             $table->softDeletes();
 
             $table->timestamps();
