@@ -71,6 +71,13 @@
                                 </div>
                             </div>
                             <div class="mb-4">
+                                <label class="block mb-2 text-sm font-bold text-gray-700" for="cni">CNI</label>
+                                <input
+                                    class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded appearance-none focus:outline-none focus:shadow-outline"
+                                    id="cni" name="cni" type="text" placeholder="CNI" />
+                                <div class="text-red-500 text-xs italic" id="cniError"></div>
+                            </div>
+                            <div class="mb-4">
                                 <label class="block mb-2 text-sm font-bold text-gray-700" for="email">Email</label>
                                 <input
                                     class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded appearance-none focus:outline-none focus:shadow-outline"

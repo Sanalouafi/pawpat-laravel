@@ -32,12 +32,16 @@ class PetController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(PetStoreRequest $request)
-    {
-        $pet = Pet::create($request->validated());
-        $pet->addMediaFromRequest('image')->toMediaCollection('pet');
+{
+    $validatedData = $request->validated();
 
-        return redirect()->route('supportAgentPet.index')->with('success', 'Pet added successfully.');
+    $validatedData['support_agent_id'] = auth()->id();
+    $pet = Pet::create($validatedData);
+    if ($request->hasFile('image')) {
+        $pet->addMediaFromRequest('image')->toMediaCollection('pet');
     }
+    return redirect()->route('supportAgentPet.index')->with('success', 'Pet added successfully.');
+}
 
     /**
      * Display the specified resource.

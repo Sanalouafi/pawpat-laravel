@@ -25,6 +25,7 @@ class SupportAgentUpdateRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone' => ['required', 'string', 'max:20'],
+            'cni'=>['required', 'string'],
             'availability' => ['required', 'boolean'],
         ];
     }

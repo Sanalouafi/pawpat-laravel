@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->string('description');
             $table->double('price');
             $table->integer('stock');
+            $table->foreignId('category_id')->references('id')->on('categories')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->softDeletes();
             $table->timestamps();
         });

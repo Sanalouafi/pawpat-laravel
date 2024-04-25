@@ -19,6 +19,7 @@ class User extends Authenticatable implements HasMedia
         'email',
         'password',
         'phone',
+        'cni',
         'role_id'
     ];
     public function role()
@@ -37,10 +38,7 @@ class User extends Authenticatable implements HasMedia
     {
         return $this->hasMany(Like::class);
     }
-    public function comments()
-    {
-        return $this->hasMany(Comment::class);
-    }
+    
     public function supportAgent()
     {
         return $this->hasOne(SupportAgent::class);

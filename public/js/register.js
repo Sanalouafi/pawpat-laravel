@@ -3,12 +3,14 @@ const phoneInput = document.getElementById('phone');
 const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
 const confirmPasswordInput = document.getElementById('c_password');
+const cniInput = document.getElementById('cni');
 
 nameInput.addEventListener('input', validateName);
 phoneInput.addEventListener('input', validatePhone);
 emailInput.addEventListener('input', validateEmail);
 passwordInput.addEventListener('input', validatePassword);
 confirmPasswordInput.addEventListener('input', validateConfirmPassword);
+cniInput.addEventListener('input', validateCni);
 
 function validateName() {
     const nameError = document.getElementById('nameError');
@@ -18,6 +20,20 @@ function validateName() {
         nameError.innerText = '';
     }
 }
+
+function validateCni() {
+    const cniError = document.getElementById('cniError');
+    const cniValue = cniInput.value.trim();
+    const regex = /^[A-Za-z]{2}\d{5,6}$/;
+    if (cniValue === '') {
+        cniError.innerText = 'Please enter your CNI.';
+    } else if (!regex.test(cniValue)) {
+        cniError.innerText = 'CNI should have two letters followed by 5 or 6 numbers.';
+    } else {
+        cniError.innerText = '';
+    }
+}
+
 
 function validatePhone() {
     const phoneError = document.getElementById('phoneError');
@@ -75,6 +91,7 @@ function validateForm() {
     validatePhone();
     validateEmail();
     validatePassword();
+    validateCni();
     validateConfirmPassword();
 
     const errorMessages = document.querySelectorAll('.text-red-500');

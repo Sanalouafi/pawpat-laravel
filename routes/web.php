@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthenticatedUserController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\UserController as AdminController;
 use App\Http\Controllers\Admin\SupportAgentController as AdminAgentController;
+use App\Http\Controllers\Admin\CategoryController as CategoryController;
 use App\Http\Controllers\SupportAgent\SupportAgentController as SupportAgentController;
 use App\Http\Controllers\SupportAgent\PetController as SupportAgentPetController;
 
@@ -36,6 +37,7 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::resource('admin', AdminController::class);
     Route::resource('adminSupport', AdminAgentController::class);
+    Route::resource('category', CategoryController::class);
     Route::resource('supportAgent', SupportAgentController::class);
     Route::resource('supportAgentPet', SupportAgentPetController::class);
 

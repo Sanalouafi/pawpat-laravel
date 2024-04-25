@@ -29,7 +29,9 @@ class Pet extends Model implements HasMedia
         'description',
         'rescued_date',
         'adoption_status',
-        'type_id'
+        'city',
+        'type_id',
+        'support_agent_id',
     ];
 
     /**
@@ -52,10 +54,7 @@ class Pet extends Model implements HasMedia
     {
         return $this->belongsTo(Type::class);
     }
-    public function comments()
-    {
-        return $this->hasMany(Comment::class);
-    }
+
     public function adoptionRequests()
     {
         return $this->hasMany(AdoptionRequest::class);

@@ -23,7 +23,9 @@ return new class extends Migration {
             $table->string('description');
             $table->date('rescued_date');
             $table->boolean('adoption_status');
-            $table->foreignId('type_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->string('city');
+            $table->foreignId('type_id')->references('id')->on('types')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('support-agent-id')->references('id')->on('support_agents')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->softDeletes();
             $table->timestamps();
         });

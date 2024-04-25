@@ -43,6 +43,7 @@ class SupportAgentController extends Controller
         $user->email = $request->email;
         $user->phone = $request->phone;
         $user->password = Hash::make($request->password);
+        $user->cni= $request->cni;
         $user->role_id = 2;
         $user->save();
         $supportAgent = new SupportAgent();
@@ -71,6 +72,7 @@ class SupportAgentController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
+            'cni' => $request->cni
         ]);
         $supportAgent->update([
             'availability' => $request->availability,

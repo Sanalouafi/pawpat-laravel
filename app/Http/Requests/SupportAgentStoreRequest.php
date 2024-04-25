@@ -27,6 +27,7 @@ class SupportAgentStoreRequest extends FormRequest
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
             'phone' => ['required', 'string', 'max:20'],
+            'cni'=>['required', 'string'],
              'availability' => ['required', 'boolean'],
         ];
     }

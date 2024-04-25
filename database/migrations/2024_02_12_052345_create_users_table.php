@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('phone');
+            $table->string('cni');
             $table->foreignId('role_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->softDeletes();
             $table->timestamps();

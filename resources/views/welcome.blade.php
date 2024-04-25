@@ -37,7 +37,7 @@
     </section>
 
 
-    <section class="second-section lg:h-full md:h-full">
+    <section class="second-section lg:h-full md:h-full" id="services">
         <div class="py-8 px-4 sm:py-16 lg:px-6">
             <div class="mb-8 lg:mb-16">
                 <h2 class="mb-4 text-4xl text-center font-extrabold text-black dark:text-black">What We Offer</h2>
