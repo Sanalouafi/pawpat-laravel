@@ -14,6 +14,7 @@ class AuthenticatedUserController extends Controller
     {
         return view('auth.login');
     }
+
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
@@ -21,14 +22,14 @@ class AuthenticatedUserController extends Controller
 
         $user = Auth::user();
 
-        if ($user->role->name === 'Admin') {
+        if ($user->role_id === 1) {
 
-            return redirect('admin');
+            return redirect()->route('admin.index');
 
-        } elseif ($user->role->name === 'Aupport Agent' && $user->supportAgent->availability === 1) {
+        } elseif ($user->role_id === 2 && $user->supportAgent->availability === 1) {
 
-            return redirect('Support Agent');
-        } elseif ($user->role->name === 'User') {
+            return redirect()->route('supportAgent.index');
+        } elseif ($user->role_id === 3) {
 
             return redirect('user');
         } else {
@@ -36,5 +37,15 @@ class AuthenticatedUserController extends Controller
 
         }
 
+    }
+    public function destroy(Request $request): RedirectResponse
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }

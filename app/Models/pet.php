@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Pet extends Model
+class Pet extends Model implements HasMedia
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory, SoftDeletes, InteractsWithMedia;
 
     /**
      * The attributes that are mass assignable.
@@ -16,8 +18,18 @@ class Pet extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'birth_date', 'breed', 'gender', 'color', 'weight', 'size',
-        'vaccination_status', 'description', 'rescued_date', 'adoption_status', 'publish_date', 'type_id'
+        'name',
+        'birth_date',
+        'breed',
+        'gender',
+        'color',
+        'weight',
+        'size',
+        'vaccination_status',
+        'description',
+        'rescued_date',
+        'adoption_status',
+        'type_id'
     ];
 
     /**
@@ -40,13 +52,16 @@ class Pet extends Model
     {
         return $this->belongsTo(Type::class);
     }
-    public function comments(){
+    public function comments()
+    {
         return $this->hasMany(Comment::class);
     }
-    public function adoptionRequests(){
+    public function adoptionRequests()
+    {
         return $this->hasMany(AdoptionRequest::class);
     }
-    public function likes(){
+    public function likes()
+    {
         return $this->hasMany(Like::class);
     }
 

@@ -13,7 +13,28 @@
         input {
             box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
         }
+
+        /* nav  */
+        .glass-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            backdrop-filter: blur(10px);
+            background-color: rgba(28, 27, 25, 0.566);
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+
+        .glass-nav.scrolled {
+            background-color: rgba(41, 40, 40, 0.284);
+        }
+
+        .active-link {
+            background-color: transparent;
+            color: #FD9E02;
+        }
     </style>
+    @include('components.navbar')
 
     <body class="font-mono bg-gray-400">
         <!-- Container -->
@@ -94,6 +115,26 @@
                 </div>
             </div>
         </div>
+        <script>
+            window.addEventListener('scroll', function() {
+                const nav = document.querySelector('.glass-nav');
+                if (window.scrollY > 60) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+            });
+            document.addEventListener('DOMContentLoaded', function() {
+                const navLinks = document.querySelectorAll('.nav-link');
+                const currentUrl = window.location.pathname;
+
+                navLinks.forEach(link => {
+                    if (link.getAttribute('href') === currentUrl) {
+                        link.classList.add('active-link');
+                    }
+                });
+            });
+        </script>
     </body>
     <script src="{{ URL::asset('js/register.js') }}"></script>
 </body>

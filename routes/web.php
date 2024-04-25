@@ -2,6 +2,11 @@
 
 use App\Http\Controllers\Auth\AuthenticatedUserController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Admin\UserController as AdminController;
+use App\Http\Controllers\Admin\SupportAgentController as AdminAgentController;
+use App\Http\Controllers\SupportAgent\SupportAgentController as SupportAgentController;
+use App\Http\Controllers\SupportAgent\PetController as SupportAgentPetController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,13 +22,24 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
         ->name('register');
     Route::post('register', [RegisteredUserController::class, 'store'])->name('register');
     Route::get('login', [AuthenticatedUserController::class, 'create'])
-                ->name('login');
+        ->name('login');
 
     Route::post('login', [AuthenticatedUserController::class, 'store']);
+
 });
+Route::middleware('auth')->group(function () {
+    Route::resource('admin', AdminController::class);
+    Route::resource('adminSupport', AdminAgentController::class);
+    Route::resource('supportAgent', SupportAgentController::class);
+    Route::resource('supportAgentPet', SupportAgentPetController::class);
+
+    Route::post('logout', [AuthenticatedUserController::class, 'destroy'])
+                ->name('logout');
+});
+

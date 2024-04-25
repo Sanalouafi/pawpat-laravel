@@ -23,11 +23,8 @@ return new class extends Migration {
             $table->string('description');
             $table->date('rescued_date');
             $table->boolean('adoption_status');
-            $table->date('publish_date');
             $table->foreignId('type_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
-
             $table->softDeletes();
-
             $table->timestamps();
         });
     }
