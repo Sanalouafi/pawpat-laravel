@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Shop extends Model
+class ProductUser extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $fillable = ['city', 'address', 'quantity', 'user_id', 'product_id'];
+    protected $fillable = ['city', 'address', 'quantity','total_amount','code_zip', 'user_id', 'product_id'];
     public function user()
     {
         return $this->belongsTo(User::class);

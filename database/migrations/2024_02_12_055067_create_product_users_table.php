@@ -10,11 +10,13 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('shops', function (Blueprint $table) {
+        Schema::create('product_users', function (Blueprint $table) {
             $table->id();
             $table->string('city');
             $table->string('address');
             $table->integer('quantity');
+            $table->float('total_amount');
+            $table->string('code_zip');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('product_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
@@ -29,6 +31,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('shops');
+        Schema::dropIfExists('product_users');
     }
 };

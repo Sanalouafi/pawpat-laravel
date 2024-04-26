@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[HomeController::class,'index'] )->name('home');
 Route::get('marketPlace',[MarketController::class,'index'] )->name('marketPlace');
+Route::get('/marketplace/{id}', 'ProductController@show')->name('marketPlace.show');
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
         ->name('register');

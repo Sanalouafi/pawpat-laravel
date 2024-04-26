@@ -30,18 +30,19 @@ class User extends Authenticatable implements HasMedia
     {
         return $this->hasMany(AdoptionRequest::class);
     }
-    public function messages()
-    {
-        return $this->hasMany(Message::class);
-    }
+
     public function likes()
     {
         return $this->hasMany(Like::class);
     }
-    
+
     public function supportAgent()
     {
         return $this->hasOne(SupportAgent::class);
+    }
+    public function product_users()
+    {
+        return $this->hasMany(ProductUser::class);
     }
 
 
