@@ -9,6 +9,10 @@ use App\Http\Controllers\Admin\CategoryController as CategoryController;
 use App\Http\Controllers\SupportAgent\SupportAgentController as SupportAgentController;
 use App\Http\Controllers\SupportAgent\PetController as SupportAgentPetController;
 use App\Http\Controllers\SupportAgent\ProductController as SupportAgentProductController;
+use App\Http\Controllers\User\UserController as UserController;
+use App\Http\Controllers\User\ProductController as UserMarketController;
+
+
 
 use Illuminate\Support\Facades\Route;
 
@@ -23,9 +27,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[HomeController::class,'index'] )->name('home');
-Route::get('marketPlace',[MarketController::class,'index'] )->name('marketPlace');
-Route::get('/marketplace/{id}', 'ProductController@show')->name('marketPlace.show');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('marketPlace', [MarketController::class, 'index'])->name('marketPlace');
+Route::get('/marketplace/{id}', [MarketController::class, 'show'])->name('marketPlace.show');
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
         ->name('register');
@@ -43,7 +47,19 @@ Route::middleware('auth')->group(function () {
     Route::resource('supportAgent', SupportAgentController::class);
     Route::resource('supportAgentPet', SupportAgentPetController::class);
     Route::resource('supportAgentProduct', SupportAgentProductController::class);
+    Route::resource('user', UserController::class);
+    Route::get('marketUser', [UserMarketController::class, 'index'])->name('marketUser');
+    Route::get('/marketUser/{id}', [UserMarketController::class, 'show'])->name('marketUser.show');
+    Route::post('/session', 'App\Http\Controllers\StripeController@session')->name('session');
+    Route::get('/success', 'App\Http\Controllers\StripeController@success')->name('success');
+
     Route::post('logout', [AuthenticatedUserController::class, 'destroy'])
-                ->name('logout');
+        ->name('logout');
+
+
+
 });
+
+
+
 

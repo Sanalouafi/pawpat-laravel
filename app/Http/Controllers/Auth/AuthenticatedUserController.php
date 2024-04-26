@@ -33,7 +33,7 @@ class AuthenticatedUserController extends Controller
 
             return redirect('user');
         } else {
-            return redirect()->route('login');
+            return redirect()->route('user.index');
 
         }
 

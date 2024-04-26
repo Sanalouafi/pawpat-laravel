@@ -1,5 +1,5 @@
 
-<x-marketplace>
+<x-user-market>
     <div class="carousel relative  w-full">
         <div class="carousel-inner relative overflow-hidden w-full">
             <!--Slide 1-->
@@ -123,13 +123,13 @@
             </nav>
             @foreach ($products as $product)
                 <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
-                    <a href="{{route('marketPlace.show',$product->id)}}" class="product-item">
+                    <a href="{{route('marketUser.show',$product->id)}}" class="product-item">
                         <div class="image-container">
                             <img src="{{ $product->getFirstMediaUrl('product') }}" alt="Product Image">
                         </div>
                         <div class="product-info">
                             <p>{{ $product->name }}</p>
-                            <a href="{{route('login')}}">
+                            <a href="#">
                                 <svg class="h-6 w-6 fill-current text-gray-500 hover:text-black"
                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <path
@@ -150,4 +150,4 @@
 
     </section>
 
-</x-marketplace>
+</x-user-market>
