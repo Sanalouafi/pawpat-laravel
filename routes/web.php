@@ -1,5 +1,6 @@
 <?php
-
+use App\Http\Controllers\Home\UserController as HomeController;
+use App\Http\Controllers\Home\ProductController as MarketController;
 use App\Http\Controllers\Auth\AuthenticatedUserController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\UserController as AdminController;
@@ -7,6 +8,7 @@ use App\Http\Controllers\Admin\SupportAgentController as AdminAgentController;
 use App\Http\Controllers\Admin\CategoryController as CategoryController;
 use App\Http\Controllers\SupportAgent\SupportAgentController as SupportAgentController;
 use App\Http\Controllers\SupportAgent\PetController as SupportAgentPetController;
+use App\Http\Controllers\SupportAgent\ProductController as SupportAgentProductController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -21,9 +23,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/',[HomeController::class,'index'] )->name('home');
+Route::get('marketPlace',[MarketController::class,'index'] )->name('marketPlace');
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
         ->name('register');
@@ -40,7 +41,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('category', CategoryController::class);
     Route::resource('supportAgent', SupportAgentController::class);
     Route::resource('supportAgentPet', SupportAgentPetController::class);
-
+    Route::resource('supportAgentProduct', SupportAgentProductController::class);
     Route::post('logout', [AuthenticatedUserController::class, 'destroy'])
                 ->name('logout');
 });

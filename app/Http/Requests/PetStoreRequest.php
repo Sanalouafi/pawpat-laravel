@@ -32,6 +32,7 @@ class PetStoreRequest extends FormRequest
             'size' => 'required|numeric|min:0',
             'vaccination_status' => 'required|boolean',
             'description' => 'nullable|string|max:255',
+            'city'=>'required|string',
             'adoption_status' => 'required|boolean',
             'type_id' => 'required|exists:types,id',
         ];

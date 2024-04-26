@@ -66,6 +66,14 @@
                                             placeholder="German Shepherd" required />
                                     </div>
                                 </div>
+                                <div class="form__input">
+                                    <label for="city"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                        City</label>
+                                    <input type="text" name="city" id="city"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                        placeholder="Marrakesh" required />
+                                </div>
                                 <div class="flex">
                                     <div class="form__input w-1/2 mr-2">
                                         <label for="Birth date"
@@ -313,7 +321,7 @@
                             </tr>
 
                             <!-- Main edit modal -->
-                            <div id="edit-pet{{$pet->id}}" tabindex="-1" aria-hidden="true"
+                            <div id="edit-pet{{ $pet->id }}" tabindex="-1" aria-hidden="true"
                                 class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                 <div class="relative p-4 max-h-full" style="width: 50%;">
                                     <!-- Modal content -->
@@ -326,7 +334,7 @@
                                             </h3>
                                             <button type="button"
                                                 class="en\d-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                                data-modal-hide="edit-pet{{$pet->id}}">
+                                                data-modal-hide="edit-pet{{ $pet->id }}">
                                                 <svg class="w-3 h-3" aria-hidden="true"
                                                     xmlns="http://www.w3.org/2000/svg" fill="none"
                                                     viewBox="0 0 14 14">
@@ -369,6 +377,7 @@
                                                             placeholder="German Shepherd" required />
                                                     </div>
                                                 </div>
+
                                                 <div class="flex">
                                                     <div class="form__input w-1/2 mr-2">
                                                         <label for="Birth date"
@@ -387,8 +396,6 @@
                                                             placeholder="" required />
                                                     </div>
                                                 </div>
-
-
 
                                                 <div>
                                                     <fieldset class="chkgroup  " role="radiogroup"
@@ -441,7 +448,6 @@
                                                             required />
                                                     </div>
                                                 </div>
-
                                                 <div class="form__input">
                                                     <label for="description"
                                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">

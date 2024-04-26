@@ -41,7 +41,7 @@
                         class="nav-link block py-2 pr-4 pl-3 text-white text-lg border-b hover:bg-black hover:text-yellow-500 lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-yellow-500">services</a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="{{route('marketPlace')}}"
                             class="nav-link block py-2 pr-4 pl-3 text-white text-l border-b  hover:bg-black hover:text-yellow-500 lg:hover:bg-transparent lg:border-0 lg:hover:text-yellow-500 lg:p-0">Marketplace</a>
                     </li>
                     <li>

@@ -25,7 +25,7 @@ return new class extends Migration {
             $table->boolean('adoption_status');
             $table->string('city');
             $table->foreignId('type_id')->references('id')->on('types')->constrained()->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('support-agent-id')->references('id')->on('support_agents')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('support_agent_id')->references('id')->on('support_agents')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->softDeletes();
             $table->timestamps();
         });

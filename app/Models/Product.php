@@ -10,8 +10,14 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 
 class Product extends Model implements HasMedia
 {
-    use HasFactory,SoftDeletes,InteractsWithMedia;
-    protected $fillable = ['name', 'description', 'price', 'stock'];
+    use HasFactory, SoftDeletes, InteractsWithMedia;
+    protected $fillable = [
+        'name',
+        'description',
+        'price',
+        'stock',
+        'category_id'
+    ];
     public function types()
     {
         return $this->belongsToMany(Type::class);
@@ -20,7 +26,8 @@ class Product extends Model implements HasMedia
     {
         return $this->belongsToMany(User::class);
     }
-    public function category(){
+    public function category()
+    {
         return $this->belongsTo(Category::class);
     }
 }

@@ -15,7 +15,7 @@ class PetController extends Controller
      */
     public function index()
     {
-        $pets=Pet::all();
+        $pets=Pet::where('support_agent_id',auth()->id())->get();
         $types=Type::all();
         return view('supportAgent.pet.index',compact('pets','types'));
     }
