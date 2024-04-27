@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\Home\UserController as HomeController;
 use App\Http\Controllers\Home\ProductController as MarketController;
+use App\Http\Controllers\Home\PetController as PetController;
 use App\Http\Controllers\Auth\AuthenticatedUserController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\UserController as AdminController;
@@ -30,6 +31,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('marketPlace', [MarketController::class, 'index'])->name('marketPlace');
 Route::get('/marketplace/{id}', [MarketController::class, 'show'])->name('marketPlace.show');
+Route::get('pets', [PetController::class, 'index'])->name('pets');
+Route::get('/pets/{id}', [PetController::class, 'show'])->name('pets.show');
+
+
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
         ->name('register');

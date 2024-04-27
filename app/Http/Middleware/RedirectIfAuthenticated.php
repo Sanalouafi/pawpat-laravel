@@ -21,7 +21,7 @@ class RedirectIfAuthenticated
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
                 Auth::guard($guard)->logout();
-                return redirect()->route('login');
+                return redirect()->route('home');
             }
         }
 

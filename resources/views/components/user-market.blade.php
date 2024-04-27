@@ -77,13 +77,13 @@
             top: 0;
             width: 100%;
             backdrop-filter: blur(10px);
-            background-color: rgba(28, 27, 25, 0.083);
+            background-color: rgba(28, 27, 25, 0.089);
             z-index: 1000;
             transition: background-color 0.3s;
         }
 
         .glass-nav.scrolled {
-            background-color: rgba(41, 40, 40, 0.064);
+            background-color: rgba(16, 14, 14, 0.323);
         }
 
         .active-link {
@@ -182,20 +182,40 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     @if (session('success'))
-    <script>
-        setTimeout(function() {
-            Swal.fire({
-                title: 'Success',
-                text: '{{ session('success') }}',
-                icon: 'success',
-                confirmButtonClass: 'btn btn-success',
-                confirmButtonText: 'Cancel',
-                timer:2000
+        <script>
+            setTimeout(function() {
+                Swal.fire({
+                    title: 'Success',
+                    text: '{{ session('success') }}',
+                    icon: 'success',
+                    confirmButtonClass: 'btn btn-success',
+                    confirmButtonText: 'Cancel',
+                    timer: 2000
 
+                });
+            }, {{ session('delay', 0) }});
+        </script>
+    @endif
+    <script>
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('.glass-nav');
+            if (window.scrollY > 60) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const currentUrl = window.location.pathname;
+
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentUrl) {
+                    link.classList.add('active-link');
+                }
             });
-        }, {{ session('delay', 0) }});
+        });
     </script>
-@endif
 </body>
 
 </html>

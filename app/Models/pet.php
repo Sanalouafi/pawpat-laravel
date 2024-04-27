@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
-
+use Carbon\Carbon;
 class Pet extends Model implements HasMedia
 {
     use HasFactory, SoftDeletes, InteractsWithMedia;
@@ -46,6 +46,11 @@ class Pet extends Model implements HasMedia
         'adoption_status' => 'boolean',
         'vaccination_status' => 'boolean',
     ];
+    protected $dates = ['birth_date'];
+    public function getAgeAttribute()
+    {
+        return Carbon::parse($this->attributes['birth_date'])->age;
+    }
 
     /**
      * Get the type of the pet.
