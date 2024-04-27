@@ -257,6 +257,25 @@
             </main>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    @if (session('success'))
+        <script>
+            setTimeout(function() {
+                Swal.fire({
+                    title: 'Success',
+                    text: '{{ session('success') }}',
+                    icon: 'success',
+                    confirmButtonClass: 'btn btn-success',
+                    confirmButtonText: 'Cancel',
+                    timer: 2000
+
+                });
+            }, {{ session('delay', 0) }});
+        </script>
+    @endif
     <script>
         function previewImage(event) {
             const input = event.target;

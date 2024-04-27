@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\SupportAgent;
 
 use App\Http\Controllers\Controller;
+use App\Models\AdoptionRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SupportAgentController extends Controller
 {
@@ -12,7 +14,8 @@ class SupportAgentController extends Controller
      */
     public function index()
     {
-        return view('supportAgent.index');
+        $adoptionRequests = AdoptionRequest::where('support_agents_id', Auth::user()->id)->get();
+        return view('supportAgent.index', compact('adoptionRequests'));
     }
 
     /**

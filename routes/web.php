@@ -12,6 +12,9 @@ use App\Http\Controllers\SupportAgent\PetController as SupportAgentPetController
 use App\Http\Controllers\SupportAgent\ProductController as SupportAgentProductController;
 use App\Http\Controllers\User\UserController as UserController;
 use App\Http\Controllers\User\ProductController as UserMarketController;
+use App\Http\Controllers\User\PetController as UserPetController;
+use App\Http\Controllers\User\AdoptionRequetController as UserAdoptionController;
+
 
 
 
@@ -57,7 +60,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/marketUser/{id}', [UserMarketController::class, 'show'])->name('marketUser.show');
     Route::post('/session', 'App\Http\Controllers\StripeController@session')->name('session');
     Route::get('/success', 'App\Http\Controllers\StripeController@success')->name('success');
-
+    Route::resource('userPet', UserPetController::class);
+    Route::post('/userAdoption', [UserAdoptionController::class, 'store'])->name('userAdoption');
     Route::post('logout', [AuthenticatedUserController::class, 'destroy'])
         ->name('logout');
 

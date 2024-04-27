@@ -22,4 +22,5 @@ class AdoptionRequest extends Model
     {
         return $this->belongsTo(SupportAgent::class, 'support_agents_id');
     }
+
 }

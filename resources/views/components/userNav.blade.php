@@ -101,7 +101,7 @@
                             class="nav-link block py-2 pr-4 pl-3 text-white text-l border-b  hover:bg-black hover:text-yellow-500 lg:hover:bg-transparent lg:border-0 lg:hover:text-yellow-500 lg:p-0">Marketplace</a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="{{route('userPet.index')}}"
                             class="nav-link block py-2 pr-4 pl-3 text-white text-l border-b  hover:bg-black hover:text-yellow-500 lg:hover:bg-transparent lg:border-0 lg:hover:text-yellow-500 lg:p-0">Our
                             Pet</a>
                     </li>

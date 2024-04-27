@@ -27,7 +27,7 @@
                 <p class="mb-6 pt-4 max-w-2xl font-bold text-white lg:mb-8 md:text-lg lg:text-xl dark:text-white">
                     Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id es
                 </p>
-                <a href="{{ route('register') }}"
+                <a href="{{ route('userPet.index') }}"
                     class="inline-flex justify-center items-center py-3 px-10 mr-3 text-base font-medium text-center text-white rounded-lg bg-blue-400  focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
                     Make a friend
 
@@ -158,9 +158,9 @@
                                 elit. Sed sed
                                 ante justo. Integer euismod libero id mauris malesuada tincidunt.</p>
                             <div class="flex items-center justify-between mt-4">
-                                <button class="pet-button text-white py-2 px-12 rounded-lg font-bold ">
+                                <a href="{{route('userPet.show',$pet->id)}}" class="pet-button text-white py-2 px-12 rounded-lg font-bold ">
                                     Learn More
-                                </button>
+                                </a>
                                 <a href="">
                                     <svg fill="#126782" height="40px" width="40px" version="1.1" id="Capa_1"
                                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -186,7 +186,7 @@
 
                 </div>
                 <!-- end cards -->
-                <a href="#" class="see-more text-white py-2 px-12 rounded-lg  "
+                <a href="{{route('userPet.index')}}" class="see-more text-white py-2 px-12 rounded-lg  "
                     style="background: #8ECAE6;">See
                     More</a>
             </div>
