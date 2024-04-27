@@ -49,19 +49,27 @@ Route::middleware('guest')->group(function () {
 
 });
 Route::middleware('auth')->group(function () {
-    Route::resource('admin', AdminController::class);
-    Route::resource('adminSupport', AdminAgentController::class);
-    Route::resource('category', CategoryController::class);
-    Route::resource('supportAgent', SupportAgentController::class);
-    Route::resource('supportAgentPet', SupportAgentPetController::class);
-    Route::resource('supportAgentProduct', SupportAgentProductController::class);
-    Route::resource('user', UserController::class);
-    Route::get('marketUser', [UserMarketController::class, 'index'])->name('marketUser');
-    Route::get('/marketUser/{id}', [UserMarketController::class, 'show'])->name('marketUser.show');
-    Route::post('/session', 'App\Http\Controllers\StripeController@session')->name('session');
-    Route::get('/success', 'App\Http\Controllers\StripeController@success')->name('success');
-    Route::resource('userPet', UserPetController::class);
-    Route::post('/userAdoption', [UserAdoptionController::class, 'store'])->name('userAdoption');
+    Route::group(['middleware' => ['admin']], function () {
+        Route::resource('admin', AdminController::class);
+        Route::resource('adminSupport', AdminAgentController::class);
+        Route::resource('category', CategoryController::class);
+    });
+
+    Route::group(['middleware' => ['supportagent']], function () {
+        Route::resource('supportAgent', SupportAgentController::class);
+        Route::resource('supportAgentPet', SupportAgentPetController::class);
+        Route::resource('supportAgentProduct', SupportAgentProductController::class);
+    });
+    Route::group(['middleware' => ['user']], function () {
+        Route::resource('user', UserController::class);
+        Route::get('marketUser', [UserMarketController::class, 'index'])->name('marketUser');
+        Route::get('/marketUser/{id}', [UserMarketController::class, 'show'])->name('marketUser.show');
+        Route::post('/session', 'App\Http\Controllers\StripeController@session')->name('session');
+        Route::get('/success', 'App\Http\Controllers\StripeController@success')->name('success');
+        Route::resource('userPet', UserPetController::class);
+        Route::post('/userAdoption', [UserAdoptionController::class, 'store'])->name('userAdoption');
+    });
+
     Route::post('logout', [AuthenticatedUserController::class, 'destroy'])
         ->name('logout');
 
