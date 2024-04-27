@@ -24,7 +24,7 @@ class AuthenticatedUserController extends Controller
 
         if ($user->role_id === 1) {
 
-            return redirect()->route('admin.index');
+            return redirect()->route('adminSupport.index');
 
         } elseif ($user->role_id === 2 && $user->supportAgent->availability === 1) {
 
